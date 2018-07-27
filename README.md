@@ -9,7 +9,7 @@
 
 这是一个适合用于 Swoole 协程环境下的 SphinxClient，支持内置连接池。
 
-代码基于 Sphinx 官方自带的 SphinxClient 修改，完全遵守原项目的 LGPL 协议。
+代码基于 Sphinx 官方自带的 SphinxClient 修改，完全遵守原项目的 GPL-2.0 协议。
 
 ## 使用说明
 

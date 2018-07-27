@@ -1,7 +1,7 @@
 {
 	"name": "yurunsoft/sphinx-client-swoole",
 	"type": "library",
-    "license": "LGPL",
+    "license": "GPL-2.0",
 	"description": "Sphinx Client 支持 Swoole 协程环境",
     "require": {
         "php": ">=7.0",
