@@ -1,37 +1,47 @@
-# SphinxClient-Swoole
+[![Latest Version](https://img.shields.io/packagist/v/yurunsoft/sphinx-client-swoole.svg)](https://packagist.org/packages/yurunsoft/sphinx-client-swoole)
+[![Php Version](https://img.shields.io/badge/php-%3E=7.0-brightgreen.svg)](https://secure.php.net/)
+[![Swoole Version](https://img.shields.io/badge/swoole-%3E=4.0.3-brightgreen.svg)](https://github.com/swoole/swoole-src)
+[![IMI License](https://img.shields.io/github/license/Yurunsoft/SphinxClient-Swoole.svg)](https://github.com/Yurunsoft/SphinxClient-Swoole/blob/master/LICENSE)
 
-#### 项目介绍
-Sphinx Client 支持 Swoole 协程环境
+## 介绍
 
-#### 软件架构
-软件架构说明
+这是一个适合用于 Swoole 协程环境下的 SphinxClient，支持内置连接池。
 
+代码基于 Sphinx 官方自带的 SphinxClient 修改，完全遵守原项目的 LGPL 协议。
 
-#### 安装教程
+## 使用说明
 
-1. xxxx
-2. xxxx
-3. xxxx
+使用方式和 Sphinx 官方自带的 SphinxClient 并无两样，唯一需要注意的是只支持在 Swoole 协程下运行。
 
-#### 使用说明
+### 连接池
 
-1. xxxx
-2. xxxx
-3. xxxx
+```php
+// 初始化连接池，改为你自己的连接配置
+SphinxPool::init(5, '192.168.0.110', 9312);
+// 连接池使用
+SphinxPool::use(function($sphinxClient){
+	// 改成你自己的搜索名和索引名
+	$result = $sphinxClient->Query('query string', 'indexName');
+		
+	if($result)
+	{
+		var_dump($result['total']);
+	}
+	else
+	{
+		var_dump($sphinxClient->GetLastError());
+	}
+});
+```
 
-#### 参与贡献
+### 直接实例化
 
-1. Fork 本项目
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
+```php
+$client = new SphinxClient;
+// 改为你自己的连接配置
+$client->SetServer('192.168.0.110', 9312);
+// 改成你自己的搜索名和索引名
+var_dump($client->Query('query string', 'indexName'));
+```
 
-
-#### 码云特技
-
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [http://git.mydoc.io/](http://git.mydoc.io/)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+更加详细的示例代码请看`test`目录下代码。
