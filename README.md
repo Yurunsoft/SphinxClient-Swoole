@@ -13,6 +13,8 @@
 
 ## 使用说明
 
+Composer:`"yurunsoft/sphinx-client-swoole":"~1.0"`
+
 使用方式和 Sphinx 官方自带的 SphinxClient 并无两样，唯一需要注意的是只支持在 Swoole 协程下运行。
 
 ### 连接池
